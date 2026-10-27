@@ -12,9 +12,13 @@ public class Course {
     @NotNull
     private String title;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+//    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
     private Teacher teacher;
+
+    @OneToOne(mappedBy = "course")
+    private CourseMaterial material;
 
     public Course() {
     }
@@ -49,12 +53,21 @@ public class Course {
         this.teacher = teacher;
     }
 
+    public CourseMaterial getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(CourseMaterial material) {
+        this.material = material;
+    }
+
     @Override
     public String toString() {
         return "Course{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", teacher=" + teacher +
+                ", material=" + material +
                 '}';
     }
 }
