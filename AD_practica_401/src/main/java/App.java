@@ -76,6 +76,10 @@ public class App {
         courseDao.create(course3);
 
         System.out.println("Curso creado: " + course3);
+
+        /* ----- TAREA 5 ----- */
+
+        //
     }
 }
 

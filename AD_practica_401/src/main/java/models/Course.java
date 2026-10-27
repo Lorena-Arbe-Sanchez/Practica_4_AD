@@ -67,7 +67,6 @@ public class Course {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", teacher=" + teacher +
-                ", material=" + material +
                 '}';
     }
 }
