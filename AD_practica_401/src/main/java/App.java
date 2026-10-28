@@ -69,12 +69,15 @@ public class App {
         // Persistir primero el Teacher
         teacherDao.create(teacher3);
 
+        // Buscar el profesor con el EntityManager de courseDao
+        Teacher teacherGuardado = courseDao.findTeacher(teacher3.getId());
+
         // Crear un Course
         Course course3 = new Course();
         course3.setTitle("Programación de Servicios y Procesos");
 
         // Asociar el Teacher al Course
-        course3.setTeacher(teacher3);
+        course3.setTeacher(teacherGuardado);
 
         // Persistir el Course
         courseDao.create(course3);
@@ -207,13 +210,23 @@ Caused by: org.hibernate.PropertyValueException: not-null property references a 
 Exception in thread "main" java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : models.Course.teacher -> models.Teacher
 Caused by: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : models.Course.teacher -> models.Teacher
 
-Curso creado: Course{id=2, title='Programación de Servicios y Procesos', teacher=Teacher{id=8, firstName='Eider', lastName='Arbaiza'}}
+Curso creado: Course{id=1, title='Programación de Servicios y Procesos', teacher=Teacher{id=2, firstName='Eider', lastName='Arbaiza'}}
 
-// TODO
+Material encontrado:
+CourseMaterial{id=1, url='https://egibide.eus/material', course=Course{id=1, title='Programación de Servicios y Procesos', teacher=Teacher{id=2, firstName='Eider', lastName='Arbaiza'}}}
+Curso encontrado:
+Course{id=1, title='Programación de Servicios y Procesos', teacher=Teacher{id=2, firstName='Eider', lastName='Arbaiza'}}
 
-// TODO
+Curso nuevo creado: 2
+Curso existente actualizado
+Curso encontrado: Bases de Datos
+Número de estudiantes: 3
 
-// TODO
+Estudiante encontrado:
+Student{id=6, lastName='null', firstName='null', birthDate=null, wantsNewsletter=false}
+Cursos del estudiante:
+Programación de Servicios y Procesos
+Bases de Datos
 
 // TODO
 

@@ -16,7 +16,7 @@ public class Course {
     private String title;
 
 //    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    @ManyToOne(optional = false, cascade = CascadeType.PERSIST)
+    @ManyToOne(optional = false/*, cascade = CascadeType.PERSIST*/)
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
     private Teacher teacher;
 
