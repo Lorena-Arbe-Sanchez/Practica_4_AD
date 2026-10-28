@@ -1,5 +1,6 @@
 import dao.CourseDao;
 import dao.CourseMaterialDao;
+import dao.StudentDao;
 import dao.TeacherDao;
 import models.Course;
 import models.CourseMaterial;
@@ -153,7 +154,31 @@ public class App {
 
         /* ----- TAREA 7 ----- */
 
-        //
+        // Crear un estudiante nuevo
+        Student studentNuevo = new Student();
+
+        // Buscar varios cursos existentes
+        Course curso1 = courseDao.find(1);
+        Course curso2 = courseDao.find(2);
+
+        // Asociar los cursos al estudiante
+        studentNuevo.addCourse(curso1);
+        studentNuevo.addCourse(curso2);
+
+        // Persistir el estudiante y sus relaciones
+        StudentDao studentDao = new StudentDao();
+        studentDao.create(studentNuevo);
+
+        // Consultar el estudiante introducido
+        Student studentEncontrado = studentDao.find(studentNuevo.getId());
+
+        System.out.println("Estudiante encontrado:");
+        System.out.println(studentEncontrado);
+
+        System.out.println("Cursos del estudiante:");
+        for (Course curso : studentEncontrado.getCourses()) {
+            System.out.println(curso.getTitle());
+        }
 
         /* ----- TAREA 8 ----- */
 

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -19,6 +21,9 @@ public class Student {
     private LocalDate birthDate;
     @NotNull
     private boolean wantsNewsletter;
+
+    @ManyToMany(mappedBy = "students")
+    private List<Course> courses = new ArrayList<>();
 
     public Student() {
     }
@@ -69,6 +74,19 @@ public class Student {
 
     public void setWantsNewsletter(boolean wantsNewsletter) {
         this.wantsNewsletter = wantsNewsletter;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public void addCourse(Course course) {
+        this.courses.add(course);
+        course.addStudent(this);
     }
 
     @Override
