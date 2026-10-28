@@ -99,6 +99,10 @@ public class App {
         // Buscar el curso asociado
         System.out.println("Curso encontrado:");
         System.out.println(courseDao.find(course4.getId()));
+
+        /* ----- TAREA 6 ----- */
+
+        //
     }
 }
 
@@ -120,6 +124,8 @@ Exception in thread "main" java.lang.IllegalStateException: org.hibernate.Transi
 Caused by: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : models.Course.teacher -> models.Teacher
 
 Curso creado: Course{id=2, title='Programación de Servicios y Procesos', teacher=Teacher{id=8, firstName='Eider', lastName='Arbaiza'}}
+
+// TODO
 
 // TODO
 

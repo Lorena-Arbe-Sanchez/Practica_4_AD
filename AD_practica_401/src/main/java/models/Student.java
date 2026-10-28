@@ -1,0 +1,84 @@
+package models;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDate;
+
+@Entity
+public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Integer id;
+    @NotNull
+    private String lastName;
+    @NotNull
+    private String firstName;
+    @NotNull
+    private LocalDate birthDate;
+    @NotNull
+    private boolean wantsNewsletter;
+
+    public Student() {
+    }
+
+    public Student(Integer id, String lastName, String firstName, LocalDate birthDate, boolean wantsNewsletter) {
+        this.id = id;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.birthDate = birthDate;
+        this.wantsNewsletter = wantsNewsletter;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public boolean isWantsNewsletter() {
+        return wantsNewsletter;
+    }
+
+    public void setWantsNewsletter(boolean wantsNewsletter) {
+        this.wantsNewsletter = wantsNewsletter;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", birthDate=" + birthDate +
+                ", wantsNewsletter=" + wantsNewsletter +
+                '}';
+    }
+}
