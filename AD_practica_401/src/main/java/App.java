@@ -3,6 +3,7 @@ import dao.CourseMaterialDao;
 import dao.TeacherDao;
 import models.Course;
 import models.CourseMaterial;
+import models.Student;
 import models.Teacher;
 
 public class App {
@@ -102,6 +103,64 @@ public class App {
 
         /* ----- TAREA 6 ----- */
 
+        // Crear varios estudiantes
+        Student student1 = new Student();
+        Student student2 = new Student();
+        Student student3 = new Student();
+
+        // Buscar un curso existente para reutilizar su profesor
+        Course cursoExistente = courseDao.find(1);
+
+        // Crear un curso nuevo
+        Course cursoNuevo = new Course();
+        cursoNuevo.setTitle("Bases de Datos");
+        cursoNuevo.setTeacher(cursoExistente.getTeacher());
+
+        // Añadir los estudiantes al curso nuevo
+        cursoNuevo.addStudent(student1);
+        cursoNuevo.addStudent(student2);
+        cursoNuevo.addStudent(student3);
+
+        // Persistir el curso y los estudiantes asociados
+        courseDao.create(cursoNuevo);
+
+        System.out.println("Curso nuevo creado: " + cursoNuevo.getId());
+
+        // Modificar un curso existente
+        Course cursoModificar = courseDao.find(1);
+
+        // Crear estudiantes nuevos
+        Student student4 = new Student();
+        Student student5 = new Student();
+
+        // Añadirlos al curso existente
+        cursoModificar.addStudent(student4);
+        cursoModificar.addStudent(student5);
+
+        // Actualizar el curso
+        courseDao.update(cursoModificar);
+
+        System.out.println("Curso existente actualizado");
+
+        // Buscar el curso nuevo con otro DAO
+        CourseDao courseDao2 = new CourseDao();
+        Course cursoEncontrado = courseDao2.find(cursoNuevo.getId());
+
+        System.out.println("Curso encontrado: " + cursoEncontrado.getTitle());
+
+        // Acceder a los estudiantes para comprobar su carga
+        System.out.println("Número de estudiantes: " + cursoEncontrado.getStudents().size());
+
+        /* ----- TAREA 7 ----- */
+
+        //
+
+        /* ----- TAREA 8 ----- */
+
+        //
+
+        /* ----- TAREA 9 ----- */
+
         //
     }
 }
@@ -124,6 +183,12 @@ Exception in thread "main" java.lang.IllegalStateException: org.hibernate.Transi
 Caused by: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : models.Course.teacher -> models.Teacher
 
 Curso creado: Course{id=2, title='Programación de Servicios y Procesos', teacher=Teacher{id=8, firstName='Eider', lastName='Arbaiza'}}
+
+// TODO
+
+// TODO
+
+// TODO
 
 // TODO
 
