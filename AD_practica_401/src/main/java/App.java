@@ -199,7 +199,15 @@ public class App {
 
         /* ----- TAREA 9 ----- */
 
-        //
+        // Buscar los estudiantes del curso con ID 2
+        List<Student> estudiantesCurso = studentDao.listStudentsByCourseId(2);
+
+        // Mostrar los estudiantes encontrados
+        System.out.println("Estudiantes del curso con ID 2:");
+
+        for (Student estudiante : estudiantesCurso) {
+            System.out.println(estudiante);
+        }
     }
 }
 
@@ -242,6 +250,9 @@ Cursos del profesor Arbaiza:
 Course{id=1, title='Programación de Servicios y Procesos', teacher=Teacher{id=2, firstName='Eider', lastName='Arbaiza'}}
 Course{id=2, title='Bases de Datos', teacher=Teacher{id=2, firstName='Eider', lastName='Arbaiza'}}
 
-// TODO
+Estudiantes del curso con ID 2:
+Student{id=1, lastName='null', firstName='null', birthDate=null, wantsNewsletter=false}
+Student{id=2, lastName='null', firstName='null', birthDate=null, wantsNewsletter=false}
+Student{id=3, lastName='null', firstName='null', birthDate=null, wantsNewsletter=false}
 
  */
