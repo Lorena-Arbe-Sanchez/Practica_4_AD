@@ -4,6 +4,8 @@ import idao.ICourseDao;
 import models.Course;
 import models.Teacher;
 
+import java.util.List;
+
 public class CourseDao extends Dao<Course, Integer> implements ICourseDao {
     @Override
     public Course find(Integer id) {
@@ -15,8 +17,8 @@ public class CourseDao extends Dao<Course, Integer> implements ICourseDao {
         return em.find(Teacher.class, id);
     }
 
-    /*@Override
-    public void listCoursesByTeacherLastName() {
-        // todo
-    }*/
+    public List<Course> listCoursesByTeacherLastName(String apellido) {
+        return em.createQuery("SELECT c FROM Course c WHERE c.teacher.lastName = :lastName", Course.class)
+                .setParameter("lastName", apellido).getResultList();
+    }
 }

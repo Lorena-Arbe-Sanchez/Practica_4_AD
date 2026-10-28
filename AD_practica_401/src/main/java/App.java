@@ -7,6 +7,8 @@ import models.CourseMaterial;
 import models.Student;
 import models.Teacher;
 
+import java.util.List;
+
 public class App {
 
     public static void main(String[] args) {
@@ -185,7 +187,15 @@ public class App {
 
         /* ----- TAREA 8 ----- */
 
-        //
+        // Buscar cursos por el apellido del profesor
+        List<Course> cursosProfesor = courseDao.listCoursesByTeacherLastName("Arbaiza");
+
+        // Mostrar los cursos encontrados
+        System.out.println("Cursos del profesor Arbaiza:");
+
+        for (Course curso : cursosProfesor) {
+            System.out.println(curso);
+        }
 
         /* ----- TAREA 9 ----- */
 
@@ -228,7 +238,9 @@ Cursos del estudiante:
 Programación de Servicios y Procesos
 Bases de Datos
 
-// TODO
+Cursos del profesor Arbaiza:
+Course{id=1, title='Programación de Servicios y Procesos', teacher=Teacher{id=2, firstName='Eider', lastName='Arbaiza'}}
+Course{id=2, title='Bases de Datos', teacher=Teacher{id=2, firstName='Eider', lastName='Arbaiza'}}
 
 // TODO
 
