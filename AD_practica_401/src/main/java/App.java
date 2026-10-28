@@ -1,6 +1,8 @@
 import dao.CourseDao;
+import dao.CourseMaterialDao;
 import dao.TeacherDao;
 import models.Course;
+import models.CourseMaterial;
 import models.Teacher;
 
 public class App {
@@ -79,7 +81,24 @@ public class App {
 
         /* ----- TAREA 5 ----- */
 
-        //
+        CourseMaterialDao courseMaterialDao = new CourseMaterialDao();
+
+        // Buscar un curso que ya exista en la BBDD
+        Course course4 = courseDao.find(1);
+
+        // Crear un CourseMaterial asociado al curso
+        CourseMaterial material = new CourseMaterial(null, "https://egibide.eus/material", course4);
+
+        // Persistir el CourseMaterial
+        courseMaterialDao.create(material);
+
+        // Buscar el CourseMaterial creado
+        System.out.println("Material encontrado:");
+        System.out.println(courseMaterialDao.find(material.getId()));
+
+        // Buscar el curso asociado
+        System.out.println("Curso encontrado:");
+        System.out.println(courseDao.find(course4.getId()));
     }
 }
 
@@ -101,5 +120,7 @@ Exception in thread "main" java.lang.IllegalStateException: org.hibernate.Transi
 Caused by: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : models.Course.teacher -> models.Teacher
 
 Curso creado: Course{id=2, title='Programación de Servicios y Procesos', teacher=Teacher{id=8, firstName='Eider', lastName='Arbaiza'}}
+
+// TODO
 
  */
